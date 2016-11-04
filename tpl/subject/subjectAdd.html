@@ -1,0 +1,136 @@
+<style>
+	.Attributecontent_left select{width:100px}
+	textarea,input{font-size:12px;}
+	.Answerpart_right textarea,.Problemcontent textarea{width:90%;height:70%;border:none;padding:10px;}
+	.chapterAnswer{ display:none}
+</style>
+				<!--题目添加-->
+                <div class="editingarea" ng-controller="subjectController">
+                	
+                    <div class="c_flex"><span class="c_flexible"></span></div>
+                    <div class="chosetitle">添加题目<a href="#/subjectManager/typeId/0/depId/0/topId/0/lelId/0" class="deletetitle" >删除</a></div>
+                	<div class="c_editview" >
+                    	<div class="Attribute">
+                             <div class="Attributetit">题目属性</div>
+                             <div class="Attributecontent">
+                                 <div class="Attributecontent_left">
+                                     <b>
+                                     	题型：
+                                         <select ng-model="subject.typeId" ng-options="type.id as type.realName for type in types"
+                                                 change-answer=""></select>
+                                     </b>
+                                     <b>
+                                     	方向：
+                                         <select ng-model="subject.depId" ng-options="dep.id as dep.name for dep in deps"></select>
+                                     </b>
+                                     <b>
+                                     	知识点：
+                                         <select ng-model="subject.topId" ng-options="top.id as top.title for top in topss|selectTopic :subject.depId"></select>
+                                     </b>
+                                     <b>
+                                     	难度：
+                                         <select ng-model="subject.lelId" ng-options="level.id as level.realName for level in levels"></select>
+                                     </b>
+                                     <!--
+									 <div class="Attributecontent_right">
+                                     	<a href="#" class="addAttr">添加</a>
+                                        <a href="#" class="leftmove">左移</a>
+                                     </div>
+                                     -->
+                                 </div>
+                             </div>
+                        </div>
+                        <div class="Problem" >
+                            <div class="Attributetit">题目题干</div>
+                            <div>
+                                <textarea name="stem" cols="80" rows="4" ng-model="subject.stem"></textarea>
+                            </div>
+                        </div>
+                        <div class="Answeroptions" >
+                            <div class="Attributetit">答案选项<em>(通过勾选每个选项下面的框可以设置正确答案)</em></div>
+                            <!--<div class="c_condition"><span class="icon_add">
+                            	<em class="icon_r" style="float: left">添加选项</em></span>
+                            </div>-->
+                            <div class="Answercontent" >
+                            	<!--选项-->
+                                <div class="Answerpart" >
+                                     <div class="Answerpart_left">
+                                         <p>A</p><span>
+                                         <input type="radio" name="answer" value="1"
+                                                /></span>
+                                     </div>
+                                     <div class="Answerpart_right">
+                                     	<textarea name="content"
+                                                  ng-model="subject.choiceContent[0]"></textarea>
+                                     </div>
+                                     <div class="clear"></div>
+                                </div>
+                                <div class="Answerpart">
+                                    <div class="Answerpart_left">
+                                        <p>B</p><span>
+                                        <input type="radio" name="answer" value="2"
+                                               />
+                                        </span>
+                                    </div>
+                                    <div class="Answerpart_right">
+                                    	<textarea name="content"
+                                                  ng-model="subject.choiceContent[1]"></textarea>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="Answerpart">
+                                    <div class="Answerpart_left">
+                                        <p>C</p><span>
+                                        <input type="radio" name="answer" value="3"
+                                               />
+                                        </span>
+                                    </div>
+                                    <div class="Answerpart_right">
+                                    	<textarea name="content"
+                                                  ng-model="subject.choiceContent[2]"></textarea>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="Answerpart">
+                                    <div class="Answerpart_left">
+                                        <p>D</p><span>
+                                        <input type="radio" name="answer" value="4"
+                                               />
+                                        </span>
+                                    </div>
+
+                                    <div class="Answerpart_right">
+                                    	<textarea name="content"
+                                                  ng-model="subject.choiceContent[3]"></textarea>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="Problem chapterAnswer">
+                            <div class="Attributetit">答案</div>
+                            <div class="Problemcontent">
+                            	<textarea name="answer" ng-model="subject.answer"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="Problem">
+                            <div class="Attributetit">答案解析</div>
+                            <div class="Problemcontent">
+                            	<textarea name="analysis" ng-model="subject.analysis"></textarea>
+                            </div>
+                        </div>
+                        <!--
+                        <div class="Problem">
+                            <div class="fistproblm"><span>1.</span><a href="#"></a></div>
+                            <div class="Problemcontent"></div>
+                        </div>
+                        -->
+                        <div class="btn_left">
+                            <span class="btnL"><em class="btnR" ng-click="saveOne()">保存并继续</em></span>
+                            <span class="btnL"><em class="btnR" ng-click="saveTwo()">保存并关闭</em></span>
+                        </div>
+                    </div>
+                </div>
+
